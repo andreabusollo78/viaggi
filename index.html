@@ -347,7 +347,7 @@ th{
 }
 
 
-.fuel-toggle-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.fuel-panel{margin-top:10px;background:#0b1220;border-radius:12px;padding:8px;display:none}.fuel-panel-title{color:#fff;font-weight:800;font-size:13px;margin:0 0 6px 0}.fuel-location-row{display:grid;grid-template-columns:1fr auto;gap:6px;margin-bottom:6px}.fuel-table{width:100%;border-collapse:collapse;font-size:11.5px;background:white;color:#111827}.fuel-table th,.fuel-table td{border:1px solid #d1d5db;padding:5px}.fuel-table th{background:#1f2937;color:white}.popup-actions{display:grid;gap:6px;margin-top:8px}.popup-actions button{border:0;border-radius:8px;padding:7px 9px;font-weight:700;color:white;cursor:pointer;background:#2563eb}.popup-actions .ghost{background:#6b7280}
+.fuel-toggle-row{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}.fuel-panel{margin-top:10px;background:#0b1220;border-radius:12px;padding:8px;display:none}.fuel-panel-title{color:#fff;font-weight:800;font-size:13px;margin:0 0 6px 0}.fuel-location-row{display:grid;grid-template-columns:1fr auto;gap:6px;margin-bottom:6px}.fuel-table{width:100%;border-collapse:collapse;font-size:11.5px;background:white;color:#111827}.fuel-table th,.fuel-table td{border:1px solid #d1d5db;padding:5px}.fuel-table th{background:#1f2937;color:white}.popup-actions{display:grid;gap:6px;margin-top:8px}.popup-actions button,.popup-actions a{border:0;border-radius:8px;padding:7px 9px;font-weight:700;color:white;cursor:pointer;background:#2563eb;text-decoration:none;text-align:center;font-family:inherit;font-size:inherit;box-sizing:border-box}.popup-actions .ghost{background:#6b7280}
 
 
 .service-toggle-row{
@@ -1068,7 +1068,7 @@ function markerPopup(p){
       <b>${pointLabel(p)}</b><br>
       <span>${p.info || ""}</span><br>
       <small>Lat: ${Number(p.lat).toFixed(4)}, Lng: ${Number(p.lng).toFixed(4)}</small>
-      <div class="popup-actions"><button onclick="askNavigation(${Number(p.lat)}, ${Number(p.lng)}, '${escapeForJs(p.name || "Destinazione")}')">Apri indicazioni</button>${p.wiki ? `<button class="ghost" onclick="window.open('${p.wiki}','_blank','noopener,noreferrer')">Wikipedia</button>` : ""}</div>
+      <div class="popup-actions"><button onclick="askNavigation(${Number(p.lat)}, ${Number(p.lng)}, '${escapeForJs(p.name || "Destinazione")}')">Apri indicazioni</button>${p.wiki ? `<a class="ghost" href="${p.wiki}" target="_blank" rel="noopener noreferrer">Wikipedia</a>` : ""}</div>
     </div>`;
 }
 
