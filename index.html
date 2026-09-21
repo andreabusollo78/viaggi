@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Billund & Copenhagen 2026 · Mobile v15 v12</title>
+<title>Billund & Copenhagen 2026 · Mobile v17</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f4f7fb;--ink:#152033;--muted:#667085;--blue:#1769e0;--nav:#0f172a;--card:#fff;--line:#e5e7eb}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 .home{max-width:720px;margin:auto;padding:22px 16px 40px}h1{font-size:24px;margin:0 0 5px}.sub{color:var(--muted);margin:0 0 18px;line-height:1.4}
 .daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;text-decoration:none;color:inherit;box-shadow:0 2px 8px #0000000d}
-.daycard b{display:block;font-size:17px;margin-bottom:4px}.daycard span{color:var(--muted);font-size:14px}.home-note{background:#eaf2ff;border-radius:14px;padding:12px 14px;margin-top:18px;font-size:14px;line-height:1.4}
+.daycard b{display:block;font-size:17px;margin-bottom:4px}.daycard span{color:var(--muted);font-size:14px}.weatherline{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:13px;color:#475467}.weathericon{font-size:19px;line-height:1}.weatherdesc{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.weathertemp{font-weight:700;color:var(--ink);white-space:nowrap}.weathersource{font-size:11px;color:#98a2b3;margin-top:4px}.home-note{background:#eaf2ff;border-radius:14px;padding:12px 14px;margin-top:18px;font-size:14px;line-height:1.4}
 .daypage{display:none}body.day .home{display:none}body.day .daypage{display:block}
 .top{position:sticky;top:0;z-index:900;background:var(--nav);color:#fff;padding:12px 60px 12px 62px;min-height:58px}.top .date{font-size:12px;opacity:.78}.top .title{font-size:18px;font-weight:800;line-height:1.2}
 .back{position:absolute;right:10px;top:12px;color:#fff;text-decoration:none;background:#243047;padding:8px;border-radius:9px;font-size:12px}
@@ -23,7 +23,7 @@
 </style></head><body>
 <button id="burger" aria-label="Menu servizi">☰</button>
 <div id="menu"><button data-kind="fuel">⛽ Distributori</button><button data-kind="atm">🏧 ATM</button><button data-kind="restaurant">🍽️ Ristoranti</button><button data-kind="supermarket">🛒 Supermercati</button><button data-kind="parking">🅿️ Parcheggi</button><div id="serviceStatus">I risultati vengono mostrati sulla mappa.</div></div>
-<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v15 · aggiornata alla guida v33</p><div id="days"></div><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
+<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v17 · aggiornata alla guida v33</p><div id="days"></div><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
 <section class="daypage"><header class="top"><div class="date" id="headDate"></div><div class="title" id="headTitle"></div><a class="back" id="homeBtn" href="#">Home</a></header><div id="map"></div><div class="wrap"><div class="summary" id="summary"></div><div class="timeline" id="timeline"></div><div class="activities"><h2>Programma / promemoria</h2><ul id="activities"></ul></div></div></section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -69,7 +69,94 @@ const tripDays=[
     {time:"11:55",name:"Copenhagen Airport",lat:55.6180,lng:12.6508,type:"aeroporto",info:"Volo confermato CPH 11:55 → BGY 14:05, Ryanair FR1785 operato da Malta Air; tariffa Basic."}],activities:["08:30 - Partenza dal MEININGER.","09:00-09:15 - Arrivo consigliato al Car Rental Centre.","10:00 - Orario prenotato per riconsegna auto.","Prima della partenza: colazione rapida Lagkagehuset/7-Eleven in zona Stazione Centrale.","11:55 - Volo CPH → BGY confermato, Ryanair FR1785 operato da Malta Air.","14:05 - Arrivo previsto a Bergamo; recupero auto e rientro a San Bonifacio."]}
 ];
 const $=s=>document.querySelector(s), params=new URLSearchParams(location.search), rawDay=params.get("day"), di=rawDay===null?NaN:Number(rawDay), hasDay=rawDay!==null&&Number.isInteger(di)&&di>=0&&di<tripDays.length;
-tripDays.forEach((d,i)=>{const a=document.createElement("a");a.className="daycard";a.href="?day="+i;a.target="_blank";a.rel="noopener";a.innerHTML=`<b>${d.day} · ${d.date}</b><span>${d.title}</span>`;$("#days").appendChild(a)});
+tripDays.forEach((d,i)=>{
+  const a=document.createElement("a");
+  a.className="daycard"; a.href="?day="+i; a.target="_blank"; a.rel="noopener";
+  a.innerHTML=`<b>${d.day} · ${d.date}</b><span>${d.title}</span>
+    <div class="weatherline" id="weather-${i}">
+      <span class="weathericon">◌</span><span class="weatherdesc">Previsioni non ancora disponibili</span><span class="weathertemp"></span>
+    </div>`;
+  $("#days").appendChild(a);
+});
+
+// Meteo ufficiale danese: DMI HARMONIE-DINI, modello ad alta risoluzione per la Danimarca.
+// Le card mostrano dati solo quando la data del viaggio rientra nell'orizzonte realmente disponibile.
+const weatherLocations=[
+  {lat:55.7308,lng:9.1154}, // 22 Billund
+  {lat:55.7351,lng:9.1268}, // 23 Billund / LEGOLAND
+  {lat:55.6761,lng:12.5683}, // 24 Copenhagen
+  {lat:55.6761,lng:12.5683}, // 25 Copenhagen
+  {lat:55.6180,lng:12.6508}  // 26 Copenhagen / CPH
+];
+
+function tripISO(i){
+  const [dd,mm,yyyy]=tripDays[i].date.split("/");
+  return `${yyyy}-${mm}-${dd}`;
+}
+function weatherText(cloud,rain){
+  if(rain>=4) return ["🌧️","Pioggia"];
+  if(rain>=0.5) return ["🌦️","Pioggia debole"];
+  if(cloud<0.20) return ["☀️","Soleggiato"];
+  if(cloud<0.50) return ["🌤️","Poco nuvoloso"];
+  if(cloud<0.80) return ["⛅","Parz. nuvoloso"];
+  return ["☁️","Nuvoloso"];
+}
+function setWeather(i,icon,desc,minT="",maxT=""){
+  const el=document.getElementById(`weather-${i}`);
+  if(!el) return;
+  el.querySelector(".weathericon").textContent=icon;
+  el.querySelector(".weatherdesc").textContent=desc;
+  el.querySelector(".weathertemp").textContent=(minT!==""&&maxT!=="")?`${minT}° / ${maxT}°`:"";
+}
+async function loadDMIWeather(i){
+  const loc=weatherLocations[i], target=tripISO(i);
+  const params="temperature-2m,fraction-of-cloud-cover,total-precipitation";
+  const q=new URLSearchParams({
+    coords:`POINT(${loc.lng} ${loc.lat})`,
+    crs:"crs84",
+    "parameter-name":params,
+    f:"GeoJSON"
+  });
+  const url="https://opendataapi.dmi.dk/v1/forecastedr/collections/harmonie_dini_sf/position?"+q.toString();
+  try{
+    const r=await fetch(url,{headers:{"Accept":"application/geo+json,application/json"}});
+    if(!r.ok) throw new Error("DMI "+r.status);
+    const data=await r.json();
+    const rows=(data.features||[]).filter(f=>{
+      const step=f.properties?.step;
+      if(!step) return false;
+      // Denmark is UTC+2 until 25 Oct 03:00 local, then UTC+1.
+      const local=new Date(step);
+      const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Europe/Copenhagen",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(local);
+      const obj=Object.fromEntries(parts.map(p=>[p.type,p.value]));
+      return `${obj.year}-${obj.month}-${obj.day}`===target;
+    });
+    if(!rows.length){
+      setWeather(i,"◌","Previsioni non ancora disponibili");
+      return;
+    }
+    const temps=[], clouds=[], precip=[];
+    rows.forEach(f=>{
+      const p=f.properties||{};
+      if(Number.isFinite(p["temperature-2m"])) temps.push(p["temperature-2m"]-273.15);
+      if(Number.isFinite(p["fraction-of-cloud-cover"])) clouds.push(p["fraction-of-cloud-cover"]);
+      if(Number.isFinite(p["total-precipitation"])) precip.push(p["total-precipitation"]);
+    });
+    if(!temps.length){ setWeather(i,"◌","Previsioni non ancora disponibili"); return; }
+    const minT=Math.round(Math.min(...temps)), maxT=Math.round(Math.max(...temps));
+    const avgCloud=clouds.length?clouds.reduce((a,b)=>a+b,0)/clouds.length:0.5;
+    // total-precipitation is accumulated; daily amount approximated by range of available values.
+    const rain=precip.length?Math.max(0,Math.max(...precip)-Math.min(...precip)):0;
+    const [icon,desc]=weatherText(avgCloud,rain);
+    setWeather(i,icon,desc,minT,maxT);
+  }catch(e){
+    setWeather(i,"◌","Meteo DMI non raggiungibile");
+  }
+}
+if(!hasDay){
+  tripDays.forEach((_,i)=>loadDMIWeather(i));
+}
+
 let map,serviceLayer; const serviceLayers={}; const activeServices=new Set();
 if(hasDay){document.body.classList.add("day");const d=tripDays[di];$("#headDate").textContent=d.day+" · "+d.date;$("#headTitle").textContent=d.title;$("#summary").textContent=d.description;
 d.activities.forEach(x=>{const li=document.createElement("li");li.textContent=x;$("#activities").appendChild(li)});
@@ -90,6 +177,15 @@ function loadBase(i){
 loadBase(0);
 const pts=d.points.map(p=>[p.lat,p.lng]);d.points.forEach(p=>L.marker([p.lat,p.lng]).addTo(map).bindPopup(`<b>${p.time||""} · ${p.name}</b><br>${p.info||""}`));if(pts.length>1){L.polyline(pts,{weight:4,opacity:.65}).addTo(map);map.fitBounds(pts,{padding:[28,28]})}else map.setView(pts[0],14);serviceLayer=L.layerGroup().addTo(map)}
 $("#burger").onclick=()=>$("#menu").classList.toggle("open");document.addEventListener("click",e=>{if(!$("#menu").contains(e.target)&&e.target!==$("#burger"))$("#menu").classList.remove("open")});
+
+const curatedSupermarkets={
+  0:[
+    {name:"REMA 1000 Billund",address:"Vejlevej 6, 7190 Billund",lat:55.7283636,lng:9.1172057,note:"Comodo prima di lasciare Billund"},
+    {name:"SuperBrugsen Billund",address:"Vejlevej 16, 7190 Billund",lat:55.7278,lng:9.119474,note:"Alternativa a Billund"},
+    {name:"Lidl Grindsted",address:"Glentevej 3, 7200 Grindsted",lat:55.759349,lng:8.920272,note:"OPZIONE PREFERITA per la spesa del 22"},
+    {name:"Netto Grindsted",address:"Vestergade 32–34, 7200 Grindsted",lat:55.759583,lng:8.922698,note:"Alternativa a Grindsted"}
+  ]
+};
 const tags={
   fuel:'node["amenity"="fuel"]',
   atm:'node["amenity"="atm"]',
@@ -171,6 +267,19 @@ async function findServices(kind){
     m.bindPopup(`<b>${name}</b><br>${labels[kind]}<br><a href="${nav}" target="_blank" rel="noopener">Naviga</a>`);
     count++;
   });
+
+  // For supermarkets, always add the places explicitly selected in guide v33.
+  // This avoids losing Grindsted stores simply because they are outside the live search radius around Billund.
+  if(kind==="supermarket" && curatedSupermarkets[di]){
+    curatedSupermarkets[di].forEach(s=>{
+      const nav=`https://www.google.com/maps/dir/?api=1&destination=${s.lat},${s.lng}`;
+      const m=L.circleMarker([s.lat,s.lng],{
+        radius:10,weight:3,color:"#ffffff",fillColor:"#16a34a",fillOpacity:1
+      }).addTo(layer);
+      m.bindPopup(`<b>${s.name}</b><br>${s.address}<br><b>${s.note}</b><br><a href="${nav}" target="_blank" rel="noopener">Naviga</a>`);
+    });
+    count += curatedSupermarkets[di].length;
+  }
 
   $("#serviceStatus").textContent=count
     ? "Attivi: "+[...activeServices].map(k=>labels[k]).join(", ")
