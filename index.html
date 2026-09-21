@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Billund & Copenhagen 2026 · Mobile v14 v12</title>
+<title>Billund & Copenhagen 2026 · Mobile v15 v12</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f4f7fb;--ink:#152033;--muted:#667085;--blue:#1769e0;--nav:#0f172a;--card:#fff;--line:#e5e7eb}
@@ -22,8 +22,8 @@
 .leaflet-control-attribution{font-size:9px}@media(min-width:800px){#map{height:48vh}}
 </style></head><body>
 <button id="burger" aria-label="Menu servizi">☰</button>
-<div id="menu"><button data-kind="fuel">⛽ Distributori</button><button data-kind="atm">🏧 ATM</button><button data-kind="restaurant">🍽️ Ristoranti</button><button data-kind="parking">🅿️ Parcheggi</button><div id="serviceStatus">I risultati vengono mostrati sulla mappa.</div></div>
-<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v14 · aggiornata alla guida v33</p><div id="days"></div><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
+<div id="menu"><button data-kind="fuel">⛽ Distributori</button><button data-kind="atm">🏧 ATM</button><button data-kind="restaurant">🍽️ Ristoranti</button><button data-kind="supermarket">🛒 Supermercati</button><button data-kind="parking">🅿️ Parcheggi</button><div id="serviceStatus">I risultati vengono mostrati sulla mappa.</div></div>
+<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v15 · aggiornata alla guida v33</p><div id="days"></div><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
 <section class="daypage"><header class="top"><div class="date" id="headDate"></div><div class="title" id="headTitle"></div><a class="back" id="homeBtn" href="#">Home</a></header><div id="map"></div><div class="wrap"><div class="summary" id="summary"></div><div class="timeline" id="timeline"></div><div class="activities"><h2>Programma / promemoria</h2><ul id="activities"></ul></div></div></section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
@@ -94,9 +94,10 @@ const tags={
   fuel:'node["amenity"="fuel"]',
   atm:'node["amenity"="atm"]',
   restaurant:'nwr["amenity"~"restaurant|fast_food|cafe"]',
+  supermarket:'nwr["shop"="supermarket"]',
   parking:'nwr["amenity"="parking"]'
 };
-const labels={fuel:"Distributore",atm:"ATM",restaurant:"Ristorante / bar",parking:"Parcheggio"};
+const labels={fuel:"Distributore",atm:"ATM",restaurant:"Ristorante / bar",supermarket:"Supermercato",parking:"Parcheggio"};
 
 
 async function findServices(kind){
@@ -153,6 +154,7 @@ async function findServices(kind){
     fuel:{color:"#fff",fillColor:"#e11d48"},
     atm:{color:"#fff",fillColor:"#7c3aed"},
     restaurant:{color:"#fff",fillColor:"#ea580c"},
+    supermarket:{color:"#fff",fillColor:"#16a34a"},
     parking:{color:"#fff",fillColor:"#2563eb"}
   };
 
