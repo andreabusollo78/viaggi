@@ -637,6 +637,24 @@ th{
     max-height:24vh;
   }
 }
+
+/* v8: vista giornaliera dedicata, ottimizzata per smartphone */
+body.day-page .app{display:block;height:auto;min-height:100vh;overflow:auto}
+body.day-page .sidebar{display:none}
+body.day-page .main{width:100%;height:auto;min-height:100vh;display:block}
+body.day-page .map-area{height:auto;min-height:100vh;display:flex;flex-direction:column}
+body.day-page #map{height:42vh;min-height:300px;flex:none}
+body.day-page .info-panel{position:relative;inset:auto;width:100%;max-height:none;border-radius:0;box-shadow:none;overflow:visible;padding:16px 14px 28px}
+body.day-page .day-page-nav{display:flex;gap:8px;flex-wrap:wrap;padding:10px 12px;background:#111827;position:sticky;top:0;z-index:1200}
+body.day-page .day-page-nav a{color:white;text-decoration:none;background:#2563eb;padding:9px 12px;border-radius:9px;font-weight:800;font-size:13px}
+body.day-page .day-page-nav a.home{background:#374151}
+@media(max-width:520px){
+ body.day-page #map{height:38vh;min-height:260px}
+ body.day-page .main{height:auto;min-height:100vh}
+ body.day-page .info-panel{max-height:none;font-size:14px}
+ body.day-page .activity{font-size:14px;line-height:1.45}
+ body.day-page table{font-size:12px}
+}
 </style>
 
 <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
@@ -648,7 +666,7 @@ th{
 <div class="app">
   <aside class="sidebar">
     <div class="header">
-      <h1>Billund & Copenhagen 2026 · v7</h1>
+      <h1>Billund & Copenhagen 2026 · v8</h1>
       <p>Mappa interattiva aggiornata alla guida v33: tappe, prenotazioni, pasti, spesa, servizi e meteo giornaliero.</p>
     </div>
 
@@ -942,7 +960,8 @@ async function initMap(){
     setTimeout(() => {
       if(map) map.invalidateSize(true);
       if(pendingInitialView && mapReady){
-        showAll();
+        if(requestedDayIndex !== null) showDay(requestedDayIndex);
+        else showAll();
         pendingInitialView = false;
       }
     }, delay);
@@ -2457,13 +2476,38 @@ function buildDayButtons(){
   const container = document.getElementById("dayButtons");
   container.innerHTML = "";
   tripDays.forEach((d, i) => {
-    const btn = document.createElement("button");
-    btn.className = "btn";
-    btn.innerText = `${d.day} - ${d.date} | ${d.title}`;
-    btn.onclick = () => showDay(i);
-    container.appendChild(btn);
+    const link = document.createElement("a");
+    link.className = "btn";
+    link.innerText = `${d.day} - ${d.date} | ${d.title}`;
+    link.href = `${window.location.pathname}?day=${i}`;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.title = "Apri la giornata in una nuova pagina";
+    container.appendChild(link);
   });
 }
+
+function getRequestedDayIndex(){
+  const params = new URLSearchParams(window.location.search);
+  if(!params.has("day")) return null;
+  const n = Number(params.get("day"));
+  return Number.isInteger(n) && n >= 0 && n < tripDays.length ? n : null;
+}
+
+function prepareDedicatedDayPage(index){
+  document.body.classList.add("day-page");
+  const main = document.querySelector(".main");
+  if(!main) return;
+  const nav = document.createElement("div");
+  nav.className = "day-page-nav";
+  const homeUrl = window.location.pathname;
+  nav.innerHTML = `<a class="home" href="${homeUrl}">← Viaggio completo</a>` +
+    tripDays.map((d,i) => `<a href="${homeUrl}?day=${i}" ${i===index?'aria-current="page"':''}>${d.day.slice(0,3)} ${d.date.split(' ')[0]}</a>`).join("");
+  main.insertBefore(nav, main.firstChild);
+}
+
+const requestedDayIndex = getRequestedDayIndex();
+if(requestedDayIndex !== null) prepareDedicatedDayPage(requestedDayIndex);
 
 buildDayButtons();
 
