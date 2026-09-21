@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Billund & Copenhagen 2026 · Mobile v17</title>
+<title>Billund & Copenhagen 2026 · Mobile v18</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f4f7fb;--ink:#152033;--muted:#667085;--blue:#1769e0;--nav:#0f172a;--card:#fff;--line:#e5e7eb}
 *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--ink)}
 .home{max-width:720px;margin:auto;padding:22px 16px 40px}h1{font-size:24px;margin:0 0 5px}.sub{color:var(--muted);margin:0 0 18px;line-height:1.4}
 .daycard{display:block;background:#fff;border:1px solid var(--line);border-radius:16px;padding:15px;margin:10px 0;text-decoration:none;color:inherit;box-shadow:0 2px 8px #0000000d}
-.daycard b{display:block;font-size:17px;margin-bottom:4px}.daycard span{color:var(--muted);font-size:14px}.weatherline{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:13px;color:#475467}.weathericon{font-size:19px;line-height:1}.weatherdesc{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.weathertemp{font-weight:700;color:var(--ink);white-space:nowrap}.weathersource{font-size:11px;color:#98a2b3;margin-top:4px}.home-note{background:#eaf2ff;border-radius:14px;padding:12px 14px;margin-top:18px;font-size:14px;line-height:1.4}
+.daycard b{display:block;font-size:17px;margin-bottom:4px}.daycard span{color:var(--muted);font-size:14px}.weatherline{display:flex;align-items:center;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid var(--line);font-size:13px;color:#475467}.weathericon{font-size:19px;line-height:1}.weatherdesc{flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.weathertemp{font-weight:700;color:var(--ink);white-space:nowrap}.weathersource{font-size:11px;color:#98a2b3;margin-top:4px}.home-note{background:#eaf2ff;border-radius:14px;padding:12px 14px;margin-top:12px;font-size:14px;line-height:1.4}.guidebtn,.walkbtn{display:block;text-decoration:none;text-align:center;font-weight:800;border-radius:13px;padding:12px 14px}.guidebtn{margin-top:14px;background:#162238;color:#fff}.walkbtn{margin:0 0 12px;background:#eaf2ff;color:#172033;border:1px solid #cbdaf4}
 .daypage{display:none}body.day .home{display:none}body.day .daypage{display:block}
 .top{position:sticky;top:0;z-index:900;background:var(--nav);color:#fff;padding:12px 60px 12px 62px;min-height:58px}.top .date{font-size:12px;opacity:.78}.top .title{font-size:18px;font-weight:800;line-height:1.2}
 .back{position:absolute;right:10px;top:12px;color:#fff;text-decoration:none;background:#243047;padding:8px;border-radius:9px;font-size:12px}
@@ -23,8 +23,8 @@
 </style></head><body>
 <button id="burger" aria-label="Menu servizi">☰</button>
 <div id="menu"><button data-kind="fuel">⛽ Distributori</button><button data-kind="atm">🏧 ATM</button><button data-kind="restaurant">🍽️ Ristoranti</button><button data-kind="supermarket">🛒 Supermercati</button><button data-kind="parking">🅿️ Parcheggi</button><div id="serviceStatus">I risultati vengono mostrati sulla mappa.</div></div>
-<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v17 · aggiornata alla guida v33</p><div id="days"></div><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
-<section class="daypage"><header class="top"><div class="date" id="headDate"></div><div class="title" id="headTitle"></div><a class="back" id="homeBtn" href="#">Home</a></header><div id="map"></div><div class="wrap"><div class="summary" id="summary"></div><div class="timeline" id="timeline"></div><div class="activities"><h2>Programma / promemoria</h2><ul id="activities"></ul></div></div></section>
+<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v18 · aggiornata alla guida v33</p><div id="days"></div><a class="guidebtn" href="guida.html" target="_blank" rel="noopener">📖 Guida viaggio</a><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
+<section class="daypage"><header class="top"><div class="date" id="headDate"></div><div class="title" id="headTitle"></div><a class="back" id="homeBtn" href="#">Home</a></header><div id="map"></div><div class="wrap"><div class="summary" id="summary"></div><div id="dayExtra"></div><div class="timeline" id="timeline"></div><div class="activities"><h2>Programma / promemoria</h2><ul id="activities"></ul></div></div></section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 const tripDays=[
@@ -158,7 +158,7 @@ if(!hasDay){
 }
 
 let map,serviceLayer; const serviceLayers={}; const activeServices=new Set();
-if(hasDay){document.body.classList.add("day");const d=tripDays[di];$("#headDate").textContent=d.day+" · "+d.date;$("#headTitle").textContent=d.title;$("#summary").textContent=d.description;
+if(hasDay){document.body.classList.add("day");const d=tripDays[di];$("#headDate").textContent=d.day+" · "+d.date;$("#headTitle").textContent=d.title;$("#summary").textContent=d.description;if(di===3){$("#dayExtra").innerHTML=`<a class="walkbtn" href="copenhagen_walk.html" target="_blank" rel="noopener">🗺️ Vedi itinerario a piedi completo</a>`;}
 d.activities.forEach(x=>{const li=document.createElement("li");li.textContent=x;$("#activities").appendChild(li)});
 d.points.forEach(p=>{const row=document.createElement("div"),nav=`https://www.google.com/maps/dir/?api=1&destination=${p.lat},${p.lng}`;row.className="stop";row.innerHTML=`<div class="time">${p.time||""}</div><div><div class="name">${p.name}</div><div class="info">${p.info||""}</div><div class="actions"><a href="${nav}" target="_blank" rel="noopener">Naviga</a>${p.wiki?`<a href="${p.wiki}" target="_blank" rel="noopener">Wikipedia</a>`:""}</div></div>`;$("#timeline").appendChild(row)});
 map=L.map("map",{zoomControl:true,preferCanvas:true});
