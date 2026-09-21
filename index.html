@@ -648,8 +648,8 @@ th{
 <div class="app">
   <aside class="sidebar">
     <div class="header">
-      <h1>Billund & Copenhagen 2026</h1>
-      <p>Mappa interattiva giorno per giorno con tappe fisse, attività, distanze, POI, distributori, ATM e meteo giornaliero.</p>
+      <h1>Billund & Copenhagen 2026 · v7</h1>
+      <p>Mappa interattiva aggiornata alla guida v33: tappe, prenotazioni, pasti, spesa, servizi e meteo giornaliero.</p>
     </div>
 
     <button class="btn global" onclick="showAll()">🌎 Globale - Tutto il viaggio</button>
@@ -686,7 +686,7 @@ th{
           <button class="btn poi" onclick="setServiceReferenceFromInput()">Usa</button>
         </div>
         <div class="small-note">
-          Distributori e ATM sono quelli del documento Gas & ATM Planner. La distanza è calcolata dalla posizione indicata o dal centro mappa.
+          I ristoranti pianificati derivano dalla guida v33; distributori e ATM restano servizi di supporto. La distanza è calcolata dalla posizione indicata o dal centro mappa.
         </div>
         <div class="table-wrap" style="max-height:260px">
           <table class="service-table">
@@ -760,37 +760,42 @@ const tripDays = [
   {day:"Giorno 1",date:"22/10/2026",title:"Billund · LEGO House",description:"Volo Bergamo–Billund, ritiro auto, LEGO House e trasferimento a Grindsted.",baseCity:"Billund, Denmark",points:[
     {time:"11:35",name:"Billund Airport",lat:55.7403,lng:9.1518,type:"aeroporto",info:"Arrivo volo da Bergamo."},
     {time:"12:00",name:"Europcar Billund Airport",lat:55.7403,lng:9.1518,type:"noleggio",info:"Ritiro Skoda Kodiaq o similare."},
-    {time:"13:00",name:"LEGO House",lat:55.7308,lng:9.1154,type:"prenotazione",info:"Ingresso prenotato 13:00–13:30."},
+    {time:"13:00",name:"LEGO House",lat:55.7308,lng:9.1154,type:"prenotazione",info:"Ingresso prenotato 13:00–13:30. Pacchetto LEGO House + LEGOLAND già acquistato."},
+    {time:"13:45",name:"MINI CHEF · LEGO House",lat:55.7308,lng:9.1154,type:"ristorante",info:"Tavolo prenotato da Enrico per 6 persone alle 13:45. Prepagamento effettuato: 200 DKK."},
     {time:"17:30",name:"Lidl Grindsted",lat:55.7559,lng:8.9279,type:"visita",info:"Spesa alimentare dopo LEGO House."},
-    {time:"18:15",name:"På landet",lat:55.7970,lng:8.9320,type:"hotel",info:"Check-in 16:00–20:00; pernottamento."}],activities:["09:40 - Partenza BGY con Norwegian D83881.","11:35 - Arrivo a Billund.","12:00 - Ritiro auto Europcar.","13:00-13:30 - Ingresso LEGO House.","Dopo la visita - spesa alimentare a Grindsted.","Check-in På landet entro le 20:00."]},
+    {time:"18:15",name:"På landet",lat:55.7970,lng:8.9320,type:"hotel",info:"Check-in 16:00–20:00; pernottamento. Nessun pasto incluso."}],activities:["09:40 - Partenza BGY con Norwegian D83881.","11:35 - Arrivo a Billund.","12:00 - Ritiro auto Europcar.","13:00-13:30 - Ingresso LEGO House.","13:45 - MINI CHEF: tavolo prenotato da Enrico per 6 persone; prepagamento 200 DKK.","Dopo la visita - spesa alimentare a Grindsted (Lidl preferito; alternative REMA 1000/SuperBrugsen Billund o Netto Grindsted).","Check-in På landet entro le 20:00."]},
   {day:"Giorno 2",date:"23/10/2026",title:"LEGOLAND Billund",description:"Giornata completa dedicata a LEGOLAND Billund.",baseCity:"Billund, Denmark",points:[
     {time:"08:30",name:"På landet",lat:55.7970,lng:8.9320,type:"hotel",info:"Partenza verso Billund."},
     {time:"09:30",name:"LEGOLAND Billund Resort",lat:55.7351,lng:9.1268,type:"prenotazione",info:"Giornata completa al parco; verificare orario definitivo 2026."},
-    {time:"18:30",name:"På landet",lat:55.7970,lng:8.9320,type:"hotel",info:"Rientro e seconda notte."}],activities:["Mattina - trasferimento Grindsted → Billund.","Giornata completa a LEGOLAND.","Pranzo nel parco.","Rientro a På landet in serata."]},
+    {time:"12:30",name:"LEGOLAND · Burger Kitchen / Family Buffet",lat:55.7351,lng:9.1268,type:"ristorante",info:"Opzioni indicate nella guida v33: Burger Kitchen per pasto rapido; Family Buffet per pasto completo. Verificare apertura nell’app LEGOLAND."},
+    {time:"18:30",name:"På landet",lat:55.7970,lng:8.9320,type:"hotel",info:"Rientro e seconda notte."}],activities:["Mattina - trasferimento Grindsted → Billund.","Giornata completa a LEGOLAND.","Pasti: Burger Kitchen per soluzione rapida oppure Family Buffet; portare acqua/snack acquistati il 22. Verificare aperture nell’app LEGOLAND.","Rientro a På landet in serata."]},
   {day:"Giorno 3",date:"24/10/2026",title:"Billund → Copenaghen",description:"Trasferimento in auto verso Copenaghen attraversando lo Storebælt; check-in al MEININGER e primo pomeriggio/sera in città.",baseCity:"Copenhagen, Denmark",points:[
     {time:"09:30",name:"På landet",lat:55.7970,lng:8.9320,type:"partenza",info:"Check-out entro le 10:00."},
     {time:"11:45",name:"Storebælt Bridge",lat:55.3419,lng:11.0366,type:"trasferimento",info:"Attraversamento ponte a pedaggio verso Sjælland."},
-    {time:"14:00",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"hotel",info:"Colbjørnsensgade 5–11; check-in dalle 15:00."},
+    {time:"14:00",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"hotel",info:"Colbjørnsensgade 5–11; check-in dalle 15:00. Colazione non inclusa."},
     {time:"15:30",name:"Ny Carlsberg Glyptotek",lat:55.6727,lng:12.5724,type:"visita",info:"Visita opzionale in base a orari e arrivo."},
-    {time:"18:00",name:"Giardini di Tivoli",lat:55.6737,lng:12.5681,type:"visita",info:"Visita/passeggiata serale opzionale; verificare calendario stagionale 2026."}],activities:["Entro 10:00 - check-out da På landet.","Trasferimento verso Copenaghen con attraversamento Storebælt.","Arrivo e parcheggio in zona MEININGER.","Pomeriggio opzionale: Glyptotek.","Sera opzionale: Tivoli / centro città."]},
+    {time:"18:00",name:"Giardini di Tivoli",lat:55.6737,lng:12.5681,type:"visita",info:"Visita/passeggiata serale opzionale; verificare calendario stagionale 2026."}],activities:["Entro 10:00 - check-out da På landet.","Trasferimento verso Copenaghen con attraversamento Storebælt.","Arrivo e parcheggio in zona MEININGER.","Pomeriggio opzionale: Glyptotek.","Sera opzionale: Tivoli / centro città.","Cena: Tivoli Food Hall oppure JAGGER/Tommi’s Burger Joint in zona Vesterbro. Acquistare acqua e snack per il giro del 25."]},
   {day:"Giorno 4",date:"25/10/2026",title:"Copenaghen a piedi",description:"Circuito pedonale dal MEININGER attraverso centro storico e porto. Circa 11–12 km e ~2h40 di cammino effettivo, escluse visite e soste.",baseCity:"Copenhagen, Denmark",points:[
     {time:"09:00",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"hotel",info:"Partenza a piedi."},
+    {time:"09:05",name:"Lagkagehuset · København H",lat:55.6726,lng:12.5647,type:"ristorante",info:"Colazione consigliata: bakery/caffetteria in Stazione Centrale; pane, pastry, sandwich e caffè. Orari da ricontrollare prima della partenza."},
     {time:"09:05",name:"Stazione Centrale di Copenaghen",lat:55.6726,lng:12.5647,type:"visita",info:"La principale stazione ferroviaria di Copenaghen, inaugurata nel 1911 e situata accanto ai Giardini di Tivoli. È il principale nodo ferroviario della capitale danese.",wiki:"https://it.wikipedia.org/wiki/Stazione_di_Copenaghen_Centrale"},
     {time:"09:10",name:"Giardini di Tivoli",lat:55.6737,lng:12.5681,type:"visita",info:"Storico parco di divertimenti inaugurato nel 1843, nel cuore di Copenaghen. In questa tappa è previsto un passaggio esterno con sosta fotografica.",wiki:"https://it.wikipedia.org/wiki/Giardini_di_Tivoli"},
     {time:"09:20",name:"Rådhuspladsen",lat:55.6761,lng:12.5683,type:"visita",info:"La Piazza del Municipio è uno dei principali spazi pubblici del centro di Copenaghen e segna l’inizio della zona pedonale dello Strøget.",wiki:"https://it.wikipedia.org/w/index.php?search=R%C3%A5dhuspladsen+Copenaghen"},
     {time:"09:40",name:"Strøget",lat:55.6784,lng:12.5764,type:"visita",info:"Celebre area pedonale e commerciale del centro storico, collega Rådhuspladsen a Kongens Nytorv attraversando il cuore della città.",wiki:"https://it.wikipedia.org/wiki/Str%C3%B8get"},
     {time:"10:10",name:"Palazzo di Christiansborg",lat:55.6759,lng:12.5787,type:"visita",info:"Palazzo sull’isola di Slotsholmen, sede del Parlamento danese e di importanti funzioni istituzionali. Prevista visita esterna dei cortili, con eventuale salita alla Torre.",wiki:"https://it.wikipedia.org/wiki/Palazzo_di_Christiansborg"},
     {time:"11:00",name:"Rundetårn",lat:55.6813,lng:12.5758,type:"visita",info:"La Torre Rotonda, costruita nel XVII secolo per volere di Cristiano IV, è nota per la caratteristica rampa a spirale e per il panorama sul centro storico. Visita interna consigliata.",wiki:"https://it.wikipedia.org/wiki/Rundet%C3%A5rn"},
+    {time:"11:50",name:"DØP · hot dog danese",lat:55.6813,lng:12.5758,type:"ristorante",info:"Pausa pranzo veloce consigliata in zona Rundetårn, coerente con il percorso a piedi."},
     {time:"12:00",name:"Castello di Rosenborg",lat:55.6854,lng:12.5776,type:"visita",info:"Castello rinascimentale fatto costruire da Cristiano IV all’inizio del Seicento. Ospita i gioielli della Corona danese ed è circondato dal Giardino del Re; possibile pausa pranzo nei dintorni.",wiki:"https://it.wikipedia.org/wiki/Castello_di_Rosenborg"},
     {time:"13:30",name:"Amalienborg",lat:55.6841,lng:12.5930,type:"visita",info:"Complesso reale formato da quattro palazzi affacciati su una grande piazza ottagonale. È la residenza ufficiale della famiglia reale danese a Copenaghen.",wiki:"https://it.wikipedia.org/wiki/Palazzo_di_Amalienborg"},
     {time:"14:40",name:"La Sirenetta",lat:55.6929,lng:12.5993,type:"visita",info:"La celebre statua bronzea ispirata alla fiaba di Hans Christian Andersen, inaugurata nel 1913 e diventata uno dei simboli più riconoscibili di Copenaghen. Breve sosta fotografica.",wiki:"https://it.wikipedia.org/wiki/Statua_della_Sirenetta"},
     {time:"15:45",name:"Nyhavn",lat:55.6797,lng:12.5910,type:"visita",info:"L’antico porto di Copenaghen, caratterizzato dalle case colorate affacciate sul canale, dalle imbarcazioni storiche e dai numerosi locali. Prevista passeggiata con pausa.",wiki:"https://it.wikipedia.org/wiki/Nyhavn"},
+    {time:"16:10",name:"Broens Street Food",lat:55.6789,lng:12.5965,type:"ristorante",info:"Opzione street food per il gruppo con piccola estensione oltre Nyhavn; scegliere solo se tempi ed energie lo consentono."},
     {time:"16:30",name:"Kongens Nytorv",lat:55.6794,lng:12.5852,type:"visita",info:"Grande piazza storica nel centro di Copenaghen, realizzata nel XVII secolo e collegata direttamente a Strøget e Nyhavn. Ultima tappa del circuito prima del rientro.",wiki:"https://it.wikipedia.org/w/index.php?search=Kongens+Nytorv+Copenaghen"},
-    {time:"17:15",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"hotel",info:"Rientro a piedi."}],activities:["09:00 - Partenza dal MEININGER.","09:10 - Tivoli (esterno).","09:20-09:40 - Rådhuspladsen.","09:40-10:10 - Strøget.","10:10-10:45 - Christiansborg.","11:00-11:45 - Rundetårn, visita interna consigliata.","12:00-13:00 - Castello di Rosenborg + Giardino del Re / pranzo.","13:30 - Amalienborg.","14:40 - La Sirenetta.","15:45-16:30 - Nyhavn.","16:30 - Kongens Nytorv.","17:15 circa - rientro al MEININGER.","Nota: nella notte tra 24 e 25 ottobre termina l'ora legale; Danimarca e Italia cambiano insieme."]},
+    {time:"17:15",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"hotel",info:"Rientro a piedi."}],activities:["Colazione: Lagkagehuset – København H (prima scelta) oppure 7-Eleven in Stazione Centrale; colazione MEININGER non inclusa.","09:00 - Partenza dal MEININGER.","09:10 - Tivoli (esterno).","09:20-09:40 - Rådhuspladsen.","09:40-10:10 - Strøget.","10:10-10:45 - Christiansborg.","11:00-11:45 - Rundetårn, visita interna consigliata.","Pranzo rapido possibile: DØP (hot dog danese) in zona Rundetårn.","12:00-13:00 - Castello di Rosenborg + Giardino del Re / pranzo.","13:30 - Amalienborg.","14:40 - La Sirenetta.","15:45-16:30 - Nyhavn; pausa/cena possibile. Broens Street Food è un’opzione con piccola estensione del percorso.","16:30 - Kongens Nytorv.","17:15 circa - rientro al MEININGER.","Nota: nella notte tra 24 e 25 ottobre termina l'ora legale; Danimarca e Italia cambiano insieme."]},
   {day:"Giorno 5",date:"26/10/2026",title:"Rientro Copenaghen → Bergamo",description:"Rilascio auto a CPH e volo di rientro verso Bergamo.",baseCity:"Copenhagen, Denmark",points:[
     {time:"08:30",name:"MEININGER Hotel Copenhagen",lat:55.6704,lng:12.5602,type:"partenza",info:"Partenza prudenziale verso aeroporto."},
     {time:"09:15",name:"Copenhagen Airport Car Rental Centre",lat:55.6305,lng:12.6489,type:"noleggio",info:"Obiettivo arrivo 09:00–09:15; riconsegna prenotata ore 10:00."},
-    {time:"11:55",name:"Copenhagen Airport",lat:55.6180,lng:12.6508,type:"aeroporto",info:"Volo preferito CPH → BGY, Ryanair/Malta Air; da confermare."}],activities:["08:30 - Partenza dal MEININGER.","09:00-09:15 - Arrivo consigliato al Car Rental Centre.","10:00 - Orario prenotato per riconsegna auto.","11:55 - Volo CPH → BGY preferito, ancora da confermare.","14:05 - Arrivo previsto a Bergamo; recupero auto e rientro a San Bonifacio."]}
+    {time:"11:55",name:"Copenhagen Airport",lat:55.6180,lng:12.6508,type:"aeroporto",info:"Volo confermato CPH 11:55 → BGY 14:05, Ryanair FR1785 operato da Malta Air; tariffa Basic."}],activities:["08:30 - Partenza dal MEININGER.","09:00-09:15 - Arrivo consigliato al Car Rental Centre.","10:00 - Orario prenotato per riconsegna auto.","Prima della partenza: colazione rapida Lagkagehuset/7-Eleven in zona Stazione Centrale.","11:55 - Volo CPH → BGY confermato, Ryanair FR1785 operato da Malta Air.","14:05 - Arrivo previsto a Bergamo; recupero auto e rientro a San Bonifacio."]}
 ];
 
 const fixedServices = [
@@ -1849,7 +1854,7 @@ th{background:#111827;color:white}
     <h1>Guida operativa di viaggio</h1>
     <h2>Billund · LEGO House · LEGOLAND · Copenaghen</h2>
     <p>Guida stampabile con tappe, pernottamenti, servizi utili, note operative e mappe schematiche. I contenuti sono generati solo dai dati permanenti inseriti nel planner.</p>
-    <div class="note-red">NOTA DI VIAGGIO: verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.</div>
+    <div class="note-red">NOTA DI VIAGGIO: guida v33. MINI CHEF prenotato il 22/10 alle 13:45; verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.</div>
   </section>
 
   <section class="section">
@@ -2123,7 +2128,7 @@ async function generateTravelGuidePdf(){
   doc.text("Guida operativa di viaggio", margin, y);
   y += 10;
   paragraph("Billund · LEGO House · LEGOLAND · Copenaghen", 10.5);
-  redNote("NOTA DI VIAGGIO: verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.");
+  redNote("NOTA DI VIAGGIO: guida v33. MINI CHEF prenotato il 22/10 alle 13:45; verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.");
   newPage();
 
   // Global map and lodging table
@@ -2241,7 +2246,7 @@ function buildPrintGuide(){
       <h1>Guida operativa di viaggio</h1>
       <h2>Billund · LEGO House · LEGOLAND · Copenaghen</h2>
       <p>Guida stampabile con tappe, pernottamenti, servizi utili, note operative e mappe schematiche. I contenuti sono generati solo dai dati permanenti inseriti nel planner.</p>
-      <div class="guide-note-red">NOTA DI VIAGGIO: verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.</div>
+      <div class="guide-note-red">NOTA DI VIAGGIO: guida v33. MINI CHEF prenotato il 22/10 alle 13:45; verificare pedaggio Storebælt, parcheggio a Copenaghen e tempi di riconsegna auto a CPH.</div>
     </section>
 
     <section class="guide-section">
@@ -2388,6 +2393,7 @@ function collectRedNotes(){
   });
 
   notes.push("A Copenaghen lasciare preferibilmente l’auto parcheggiata e svolgere il circuito del 25 ottobre a piedi.");
+  notes.push("Kit viaggio v33: farmaci personali, antidolorifico/antipiretico abituale, eventuale antistaminico, prodotti GI/reidratazione, cerotti/disinfettante/vesciche e termometro. Per i bambini solo medicinali e dosaggi appropriati già noti/concordati.");
 
   return [...new Set(notes)];
 }
