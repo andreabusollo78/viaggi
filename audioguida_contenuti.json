@@ -94,5 +94,29 @@
     "family": "Un tempo soltanto il re e i suoi ospiti potevano passeggiare qui. Oggi possiamo farlo anche noi: scegliete l’albero più bello e immaginate di essere invitati a una festa reale.",
     "curiosity": "La sosta è gratuita ed è ideale per riposare.",
     "source": "https://denkongeligesamling.dk/en/rosenborg/"
+  },
+  {
+    "name": "Storebælt Bridge",
+    "where": "Sabato 24 · attraversamento in auto · pedaggio",
+    "history": "Il ponte del Grande Belt collega Fionia e Selandia e ha aperto al traffico stradale nel 1998. È parte di un collegamento che ha ridotto la dipendenza dai traghetti tra le due isole. L’opera comprende un grande ponte sospeso e un tratto occidentale: una realizzazione di ingegneria che attraversa uno degli stretti più importanti della Danimarca.",
+    "family": "Guardate fuori dal finestrino: stiamo passando sopra un braccio di mare! I piloni del ponte sono enormi, ma da lontano sembrano sottili. Immaginate quante auto, camion e persone passano di qui ogni giorno.",
+    "curiosity": "Il passaggio in automobile è soggetto a pedaggio. Non fermarsi per fotografare: osservare soltanto dai posti passeggeri.",
+    "source": "https://www.storebaelt.dk/en/"
+  },
+  {
+    "name": "Ny Carlsberg Glyptotek",
+    "where": "Sabato 24 · visita facoltativa · museo a pagamento",
+    "history": "La Ny Carlsberg Glyptotek nacque grazie alla collezione di Carl Jacobsen, esponente della famiglia Carlsberg. È conosciuta per le sculture antiche, l’arte europea e il giardino d’inverno coperto da una grande cupola. Il museo racconta come un collezionista abbia trasformato una passione privata in un patrimonio pubblico.",
+    "family": "Un museo che assomiglia anche a una serra tropicale: statue, grandi sale e piante sotto un tetto di vetro. Provate a immaginare che ogni statua abbia una storia da raccontare.",
+    "curiosity": "La visita è opzionale: prima vengono riposo, cena e Tivoli. I minori di 18 anni hanno ingresso gratuito secondo il sito del museo.",
+    "source": "https://glyptoteket.com/visit/visit-with-children"
+  },
+  {
+    "name": "Tivoli · spettacolo di luci sul lago",
+    "where": "Sabato 24 · ore 21:30 · evento nel parco",
+    "history": "La tradizione delle illuminazioni è parte dell’identità scenografica dei Giardini Tivoli, inaugurati nel 1843. Nella stagione di Halloween il parco aggiunge luci, colori e allestimenti a tema. Lo spettacolo sul lago è previsto nel nostro programma alle 21:30: verificare l’orario ufficiale il giorno della visita.",
+    "family": "È arrivato il momento di guardare il lago: le luci si riflettono sull’acqua e trasformano il parco. Provate a scegliere il colore più bello e a ricordare quale decorazione vi è piaciuta di più.",
+    "curiosity": "Lo spettacolo è previsto nell’ambito della visita a Tivoli: non è un secondo ingresso al parco.",
+    "source": "https://www.tivoli.dk/en/opening-hours-and-seasons/halloween-in-tivoli"
   }
 ]
