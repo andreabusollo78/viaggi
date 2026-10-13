@@ -1,0 +1,12 @@
+/* Tema v24 condiviso */
+:root{color-scheme:light}html[data-theme="dark"]{color-scheme:dark;--bg:#0d1524!important;--card:#182538!important;--ink:#f3f6fc!important;--muted:#bfcbdb!important;--line:#40516a!important;--nav:#111b2d!important;--dark:#111b2d!important;--accent:#86b9ff!important;--blue:#86b9ff!important}
+html[data-theme="dark"] body{background:#0d1524!important;color:#f3f6fc!important}
+html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] .summary,html[data-theme="dark"] .tripmap-card,html[data-theme="dark"] .home-note,html[data-theme="dark"] .tablewrap,html[data-theme="dark"] .timeline-item{background:#182538!important;color:#f3f6fc!important;border-color:#40516a!important}
+html[data-theme="dark"] main,html[data-theme="dark"] section{color:#f3f6fc}
+html[data-theme="dark"] a{color:#a9ceff}html[data-theme="dark"] .top a,html[data-theme="dark"] .top strong{color:#fff!important}
+html[data-theme="dark"] th,html[data-theme="dark"] td{background:#182538!important;color:#f3f6fc!important;border-color:#40516a!important}
+html[data-theme="dark"] button,html[data-theme="dark"] input,html[data-theme="dark"] select{color:#f3f6fc;background:#263954;border-color:#61718a}
+html[data-theme="dark"] .guidebtn,html[data-theme="dark"] nav a,html[data-theme="dark"] .printbtn{background:#263954!important;color:#f3f6fc!important;border-color:#61718a!important}
+html[data-theme="dark"] .sub,html[data-theme="dark"] .tag,html[data-theme="dark"] .heroSub{color:#c5d0e0!important}
+#themeToggle{position:fixed;right:12px;bottom:16px;z-index:9999;padding:11px 14px;border-radius:999px;border:1px solid #7892b6;background:#162a49;color:white;box-shadow:0 3px 12px #0004;font:700 14px system-ui;cursor:pointer}
+@media print{#themeToggle{display:none!important}html[data-theme="dark"]{color-scheme:light!important}html[data-theme="dark"] body{background:#fff!important;color:#111!important}html[data-theme="dark"] main,html[data-theme="dark"] section,html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] th,html[data-theme="dark"] td{background:#fff!important;color:#111!important}}

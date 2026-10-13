@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Billund & Copenhagen 2026 · Mobile v23</title>
+<title>Billund & Copenhagen 2026 · Mobile v24</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f4f7fb;--ink:#152033;--muted:#667085;--blue:#1769e0;--nav:#0f172a;--card:#fff;--line:#e5e7eb}
@@ -21,10 +21,10 @@
 #menu{display:none;position:fixed;left:10px;top:58px;z-index:1200;width:245px;background:#111827;border-radius:13px;padding:8px;box-shadow:0 8px 25px #0006}#menu.open{display:block}
 #menu button{display:block;width:100%;border:1px solid #fff;background:#243047;color:#fff;text-align:left;padding:11px;border-radius:8px;margin:4px 0;font-weight:700;cursor:pointer}#menu button.active{background:#fff;color:#243047}#serviceStatus{font-size:12px;color:#cbd5e1;padding:7px 8px 4px}
 .leaflet-control-attribution{font-size:9px}@media(min-width:800px){#map{height:48vh}}
-</style></head><body>
+</style><link rel="stylesheet" href="theme.css"><script defer src="theme.js"></script></head><body>
 <button id="burger" aria-label="Menu servizi">☰</button>
 <div id="menu"><button data-kind="fuel">⛽ Distributori</button><button data-kind="atm">🏧 ATM</button><button data-kind="restaurant">🍽️ Ristoranti</button><button data-kind="supermarket">🛒 Supermercati</button><button data-kind="parking">🅿️ Parcheggi</button><div id="serviceStatus">I risultati vengono mostrati sulla mappa.</div></div>
-<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v23 · audioguida + percorso famiglia</p><div class="tripmap-card"><div class="tripmap-title">🗺️ Il nostro viaggio in Danimarca</div><div id="tripOverviewMap" class="tripmap" aria-label="Mappa della Danimarca con Billund e Copenaghen"></div><div class="tripmap-sub">📍 Billund → 📍 Copenaghen</div></div><div id="days"></div><a class="guidebtn" href="audioguida.html" target="_blank" rel="noopener">🎧 Audioguida storica (anche offline)</a><a class="guidebtn" href="guida.html" target="_blank" rel="noopener">📖 Guida viaggio</a><a class="guidebtn" href="copenhagen_local.html" target="_blank" rel="noopener">🇩🇰 Copenaghen · Locali & Food</a><a class="guidebtn" href="copenhagen_parking.html" target="_blank" rel="noopener">🅿️ Parcheggi Copenaghen</a><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
+<main class="home"><h1>Billund & Copenhagen 2026</h1><p class="sub">22–26 ottobre · 4 adulti + 2 bambini<br>Agenda mobile v24 · audioguida + percorso famiglia</p><div class="tripmap-card"><div class="tripmap-title">🗺️ Il nostro viaggio in Danimarca</div><div id="tripOverviewMap" class="tripmap" aria-label="Mappa della Danimarca con Billund e Copenaghen"></div><div class="tripmap-sub">📍 Billund → 📍 Copenaghen</div></div><div id="days"></div><a class="guidebtn" href="cambio.html">💶 Convertitore € ↔ kr (anche offline)</a><a class="guidebtn" href="audioguida.html" target="_blank" rel="noopener">🎧 Audioguida storica (anche offline)</a><a class="guidebtn" href="guida.html" target="_blank" rel="noopener">📖 Guida viaggio</a><a class="guidebtn" href="copenhagen_local.html" target="_blank" rel="noopener">🇩🇰 Copenaghen · Locali & Food</a><a class="guidebtn" href="copenhagen_parking.html" target="_blank" rel="noopener">🅿️ Parcheggi Copenaghen</a><div class="home-note"><b>Uso rapido:</b> tocca una giornata: si apre in una nuova scheda con mappa, tappe e dettagli.</div></main>
 <section class="daypage"><header class="top"><div class="date" id="headDate"></div><div class="title" id="headTitle"></div><a class="back" id="homeBtn" href="#">Home</a></header><div id="map"></div><div class="wrap"><div class="summary" id="summary"></div><div id="dayExtra"></div><div class="timeline" id="timeline"></div><div class="activities"><h2>Programma / promemoria</h2><ul id="activities"></ul></div></div></section>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
