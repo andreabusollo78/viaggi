@@ -1,4 +1,4 @@
-/* Tema v24 condiviso */
+/* Tema v25 condiviso: schede leggibili anche in modalità scura */
 :root{color-scheme:light}html[data-theme="dark"]{color-scheme:dark;--bg:#0d1524!important;--card:#182538!important;--ink:#f3f6fc!important;--muted:#bfcbdb!important;--line:#40516a!important;--nav:#111b2d!important;--dark:#111b2d!important;--accent:#86b9ff!important;--blue:#86b9ff!important}
 html[data-theme="dark"] body{background:#0d1524!important;color:#f3f6fc!important}
 html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] .summary,html[data-theme="dark"] .tripmap-card,html[data-theme="dark"] .home-note,html[data-theme="dark"] .tablewrap,html[data-theme="dark"] .timeline-item{background:#182538!important;color:#f3f6fc!important;border-color:#40516a!important}
@@ -10,3 +10,12 @@ html[data-theme="dark"] .guidebtn,html[data-theme="dark"] nav a,html[data-theme=
 html[data-theme="dark"] .sub,html[data-theme="dark"] .tag,html[data-theme="dark"] .heroSub{color:#c5d0e0!important}
 #themeToggle{position:fixed;right:12px;bottom:16px;z-index:9999;padding:11px 14px;border-radius:999px;border:1px solid #7892b6;background:#162a49;color:white;box-shadow:0 3px 12px #0004;font:700 14px system-ui;cursor:pointer}
 @media print{#themeToggle{display:none!important}html[data-theme="dark"]{color-scheme:light!important}html[data-theme="dark"] body{background:#fff!important;color:#111!important}html[data-theme="dark"] main,html[data-theme="dark"] section,html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] th,html[data-theme="dark"] td{background:#fff!important;color:#111!important}}
+
+/* La modalità scura cambia la cornice della pagina, non il testo delle bolle. */
+html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] .summary,html[data-theme="dark"] .tripmap-card,html[data-theme="dark"] .home-note,html[data-theme="dark"] .tablewrap,html[data-theme="dark"] .timeline-item,html[data-theme="dark"] .status,html[data-theme="dark"] .kid-guide,html[data-theme="dark"] .kidGuide,html[data-theme="dark"] .kidbox{background:#fff!important;color:#172033!important;border-color:#dce3ed!important;--ink:#172033;--muted:#596b82;--card:#fff;--line:#dce3ed}
+html[data-theme="dark"] .hero *,html[data-theme="dark"] .card *,html[data-theme="dark"] .note *,html[data-theme="dark"] .summary *,html[data-theme="dark"] .tripmap-card *,html[data-theme="dark"] .home-note *,html[data-theme="dark"] .tablewrap *,html[data-theme="dark"] .timeline-item *,html[data-theme="dark"] .status *{color:#172033}
+html[data-theme="dark"] .hero .muted,html[data-theme="dark"] .card .muted,html[data-theme="dark"] .note .muted,html[data-theme="dark"] .summary .muted,html[data-theme="dark"] .timeline-item .muted,html[data-theme="dark"] .card small,html[data-theme="dark"] .card .sub,html[data-theme="dark"] .hero .heroSub{color:#596b82!important}
+html[data-theme="dark"] .card a,html[data-theme="dark"] .timeline-item a,html[data-theme="dark"] .hero a{color:#174e9c!important}
+html[data-theme="dark"] th,html[data-theme="dark"] td{background:#fff!important;color:#172033!important;border-color:#dce3ed!important}
+html[data-theme="dark"] .card input,html[data-theme="dark"] .card select,html[data-theme="dark"] .card button,html[data-theme="dark"] .timeline-item button,html[data-theme="dark"] .guidebtn{background:#f4f7fb!important;color:#172033!important;border-color:#9daec4!important}
+html[data-theme="dark"] .status{background:#e5eefb!important;color:#172033!important}
