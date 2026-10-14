@@ -17,3 +17,8 @@ html[data-theme="dark"] .home>h1,html[data-theme="dark"] .home>.sub{color:#fff!i
 
 /* v27 global navigation, safe areas and contrast */
 body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:5000;background:#fff;border-top:1px solid #dce3ed;display:flex;justify-content:space-around;padding:7px 3px max(8px,env(safe-area-inset-bottom));box-shadow:0 -2px 14px #00000015}.bottom-nav a{color:#172033!important;text-decoration:none!important;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:21px;flex:1;line-height:1.1}.bottom-nav a span{font-size:10px;color:#596b82!important;font-weight:750}html[data-theme="dark"] .bottom-nav{background:#fff!important}#themeToggle{bottom:calc(80px + env(safe-area-inset-bottom));z-index:5001}html[data-theme="dark"] .bottom-nav a{color:#172033!important}@media print{.bottom-nav{display:none!important}body{padding-bottom:0!important}}
+
+/* v30: home title legible in dark mode; preserve light cards */
+html[data-theme="dark"] .home .home-head h1{color:#fff!important}
+html[data-theme="dark"] .home .home-head .eyebrow{color:#cbd5e1!important}
+html[data-theme="dark"] .home .home-head .sub{color:#cbd5e1!important}
