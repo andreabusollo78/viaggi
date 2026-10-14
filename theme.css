@@ -1,21 +1,19 @@
-/* Tema v25 condiviso: schede leggibili anche in modalità scura */
-:root{color-scheme:light}html[data-theme="dark"]{color-scheme:dark;--bg:#0d1524!important;--card:#182538!important;--ink:#f3f6fc!important;--muted:#bfcbdb!important;--line:#40516a!important;--nav:#111b2d!important;--dark:#111b2d!important;--accent:#86b9ff!important;--blue:#86b9ff!important}
-html[data-theme="dark"] body{background:#0d1524!important;color:#f3f6fc!important}
-html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] .summary,html[data-theme="dark"] .tripmap-card,html[data-theme="dark"] .home-note,html[data-theme="dark"] .tablewrap,html[data-theme="dark"] .timeline-item{background:#182538!important;color:#f3f6fc!important;border-color:#40516a!important}
-html[data-theme="dark"] main,html[data-theme="dark"] section{color:#f3f6fc}
-html[data-theme="dark"] a{color:#a9ceff}html[data-theme="dark"] .top a,html[data-theme="dark"] .top strong{color:#fff!important}
-html[data-theme="dark"] th,html[data-theme="dark"] td{background:#182538!important;color:#f3f6fc!important;border-color:#40516a!important}
-html[data-theme="dark"] button,html[data-theme="dark"] input,html[data-theme="dark"] select{color:#f3f6fc;background:#263954;border-color:#61718a}
-html[data-theme="dark"] .guidebtn,html[data-theme="dark"] nav a,html[data-theme="dark"] .printbtn{background:#263954!important;color:#f3f6fc!important;border-color:#61718a!important}
-html[data-theme="dark"] .sub,html[data-theme="dark"] .tag,html[data-theme="dark"] .heroSub{color:#c5d0e0!important}
+/* v25.1: dark frame, always-light readable content cards */
+:root{color-scheme:light}
+html[data-theme="dark"]{color-scheme:light;--bg:#0d1524;--card:#fff;--ink:#172033;--muted:#596b82;--line:#dce3ed;--accent:#174e9c;--blue:#174e9c}
+html[data-theme="dark"] body{background:#0d1524!important;color:#172033}
+html[data-theme="dark"] .top,html[data-theme="dark"] header.top{background:#111b2d!important;color:#fff!important}
+html[data-theme="dark"] .top a,html[data-theme="dark"] .top strong{color:#fff!important}
+/* Cards and every nested element inherit original light-theme ink, including heading and meta text. */
+html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box){background:#fff!important;color:#172033!important;border-color:#dce3ed!important;--ink:#172033;--muted:#596b82;--card:#fff;--line:#dce3ed;--accent:#174e9c;--blue:#174e9c}
+html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) :is(h1,h2,h3,h4,b,strong,.title,.tripmap-title){color:#172033!important}
+html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) :is(p,span,small,.sub,.muted,.tag,.heroSub,.description,.meta){color:#596b82!important}
+html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) a{color:#174e9c!important}
+html[data-theme="dark"] :is(th,td){background:#fff!important;color:#172033!important;border-color:#dce3ed!important}
+html[data-theme="dark"] :is(input,select,textarea,button,.guidebtn,.printbtn){color:#172033;background:#f4f7fb;border-color:#9daec4}
+html[data-theme="dark"] .home>h1,html[data-theme="dark"] .home>.sub{color:#fff!important}
 #themeToggle{position:fixed;right:12px;bottom:16px;z-index:9999;padding:11px 14px;border-radius:999px;border:1px solid #7892b6;background:#162a49;color:white;box-shadow:0 3px 12px #0004;font:700 14px system-ui;cursor:pointer}
-@media print{#themeToggle{display:none!important}html[data-theme="dark"]{color-scheme:light!important}html[data-theme="dark"] body{background:#fff!important;color:#111!important}html[data-theme="dark"] main,html[data-theme="dark"] section,html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] th,html[data-theme="dark"] td{background:#fff!important;color:#111!important}}
+@media print{#themeToggle{display:none!important}html[data-theme="dark"] body{background:white!important;color:#172033!important}}
 
-/* La modalità scura cambia la cornice della pagina, non il testo delle bolle. */
-html[data-theme="dark"] .hero,html[data-theme="dark"] .card,html[data-theme="dark"] .note,html[data-theme="dark"] .summary,html[data-theme="dark"] .tripmap-card,html[data-theme="dark"] .home-note,html[data-theme="dark"] .tablewrap,html[data-theme="dark"] .timeline-item,html[data-theme="dark"] .status,html[data-theme="dark"] .kid-guide,html[data-theme="dark"] .kidGuide,html[data-theme="dark"] .kidbox{background:#fff!important;color:#172033!important;border-color:#dce3ed!important;--ink:#172033;--muted:#596b82;--card:#fff;--line:#dce3ed}
-html[data-theme="dark"] .hero *,html[data-theme="dark"] .card *,html[data-theme="dark"] .note *,html[data-theme="dark"] .summary *,html[data-theme="dark"] .tripmap-card *,html[data-theme="dark"] .home-note *,html[data-theme="dark"] .tablewrap *,html[data-theme="dark"] .timeline-item *,html[data-theme="dark"] .status *{color:#172033}
-html[data-theme="dark"] .hero .muted,html[data-theme="dark"] .card .muted,html[data-theme="dark"] .note .muted,html[data-theme="dark"] .summary .muted,html[data-theme="dark"] .timeline-item .muted,html[data-theme="dark"] .card small,html[data-theme="dark"] .card .sub,html[data-theme="dark"] .hero .heroSub{color:#596b82!important}
-html[data-theme="dark"] .card a,html[data-theme="dark"] .timeline-item a,html[data-theme="dark"] .hero a{color:#174e9c!important}
-html[data-theme="dark"] th,html[data-theme="dark"] td{background:#fff!important;color:#172033!important;border-color:#dce3ed!important}
-html[data-theme="dark"] .card input,html[data-theme="dark"] .card select,html[data-theme="dark"] .card button,html[data-theme="dark"] .timeline-item button,html[data-theme="dark"] .guidebtn{background:#f4f7fb!important;color:#172033!important;border-color:#9daec4!important}
-html[data-theme="dark"] .status{background:#e5eefb!important;color:#172033!important}
+/* v27 global navigation, safe areas and contrast */
+body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:5000;background:#fff;border-top:1px solid #dce3ed;display:flex;justify-content:space-around;padding:7px 3px max(8px,env(safe-area-inset-bottom));box-shadow:0 -2px 14px #00000015}.bottom-nav a{color:#172033!important;text-decoration:none!important;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:21px;flex:1;line-height:1.1}.bottom-nav a span{font-size:10px;color:#596b82!important;font-weight:750}html[data-theme="dark"] .bottom-nav{background:#fff!important}#themeToggle{bottom:calc(80px + env(safe-area-inset-bottom));z-index:5001}html[data-theme="dark"] .bottom-nav a{color:#172033!important}@media print{.bottom-nav{display:none!important}body{padding-bottom:0!important}}
