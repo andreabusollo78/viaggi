@@ -1,30 +1,6 @@
-/* v25.1: dark frame, always-light readable content cards */
-:root{color-scheme:light}
-html[data-theme="dark"]{color-scheme:light;--bg:#0d1524;--card:#fff;--ink:#172033;--muted:#596b82;--line:#dce3ed;--accent:#174e9c;--blue:#174e9c}
-html[data-theme="dark"] body{background:#0d1524!important;color:#172033}
-html[data-theme="dark"] .top,html[data-theme="dark"] header.top{background:#111b2d!important;color:#fff!important}
-html[data-theme="dark"] .top a,html[data-theme="dark"] .top strong{color:#fff!important}
-/* Cards and every nested element inherit original light-theme ink, including heading and meta text. */
-html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box){background:#fff!important;color:#172033!important;border-color:#dce3ed!important;--ink:#172033;--muted:#596b82;--card:#fff;--line:#dce3ed;--accent:#174e9c;--blue:#174e9c}
-html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) :is(h1,h2,h3,h4,b,strong,.title,.tripmap-title){color:#172033!important}
-html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) :is(p,span,small,.sub,.muted,.tag,.heroSub,.description,.meta){color:#596b82!important}
-html[data-theme="dark"] :is(.hero,.card,.note,.summary,.tripmap-card,.home-note,.tablewrap,.timeline-item,.status,.kid-guide,.kidGuide,.kidbox,.day-card,.daycard,.panel,.box) a{color:#174e9c!important}
-html[data-theme="dark"] :is(th,td){background:#fff!important;color:#172033!important;border-color:#dce3ed!important}
-html[data-theme="dark"] :is(input,select,textarea,button,.guidebtn,.printbtn){color:#172033;background:#f4f7fb;border-color:#9daec4}
-html[data-theme="dark"] .home>h1,html[data-theme="dark"] .home>.sub{color:#fff!important}
-#themeToggle{position:fixed;right:12px;bottom:16px;z-index:9999;padding:11px 14px;border-radius:999px;border:1px solid #7892b6;background:#162a49;color:white;box-shadow:0 3px 12px #0004;font:700 14px system-ui;cursor:pointer}
-@media print{#themeToggle{display:none!important}html[data-theme="dark"] body{background:white!important;color:#172033!important}}
+:root{color-scheme:light}html,body{color-scheme:light}/* v27 global navigation, safe areas and contrast */
+body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:5000;background:#fff;border-top:1px solid #dce3ed;display:flex;justify-content:space-around;padding:7px 3px max(8px,env(safe-area-inset-bottom));box-shadow:0 -2px 14px #00000015}.bottom-nav a{color:#172033!important;text-decoration:none!important;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:21px;flex:1;line-height:1.1}.bottom-nav a span{font-size:10px;color:#596b82!important;font-weight:750}@media print{.bottom-nav{display:none!important}body{padding-bottom:0!important}}
 
-/* v27 global navigation, safe areas and contrast */
-body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;right:0;z-index:5000;background:#fff;border-top:1px solid #dce3ed;display:flex;justify-content:space-around;padding:7px 3px max(8px,env(safe-area-inset-bottom));box-shadow:0 -2px 14px #00000015}.bottom-nav a{color:#172033!important;text-decoration:none!important;display:flex;flex-direction:column;align-items:center;gap:1px;font-size:21px;flex:1;line-height:1.1}.bottom-nav a span{font-size:10px;color:#596b82!important;font-weight:750}html[data-theme="dark"] .bottom-nav{background:#fff!important}#themeToggle{bottom:calc(80px + env(safe-area-inset-bottom));z-index:5001}html[data-theme="dark"] .bottom-nav a{color:#172033!important}@media print{.bottom-nav{display:none!important}body{padding-bottom:0!important}}
 
-/* v30: home title legible in dark mode; preserve light cards */
-html[data-theme="dark"] .home .home-head h1{color:#fff!important}
-html[data-theme="dark"] .home .home-head .eyebrow{color:#cbd5e1!important}
-html[data-theme="dark"] .home .home-head .sub{color:#cbd5e1!important}
-
-/* v31 headings outside white cards */
-html[data-theme="dark"] main > h1,html[data-theme="dark"] main > h2,html[data-theme="dark"] main > .section,html[data-theme="dark"] body > h1,html[data-theme="dark"] .home-head h1,html[data-theme="dark"] .page-head h1{color:#f8fafc!important}
-html[data-theme="dark"] main > p,html[data-theme="dark"] .page-head > p{color:#cbd5e1!important}
-html[data-theme="dark"] main > a.back{color:#93c5fd!important}
-html[data-theme="dark"] :is(.card,.hero,.panel,.box,.note) :is(h1,h2,h3,h4){color:#172033!important}
+/* v32: consistently legible action buttons on white cards */
+a.navbtn,a.action,a[href].navbtn,button.primary,.actions a{color:#fff!important}a.navbtn:visited,a.action:visited{color:#fff!important}.bottom-nav a{color:#172033!important}.bottom-nav a span{color:#596b82!important}
