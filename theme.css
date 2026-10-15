@@ -22,3 +22,9 @@ body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;ri
 html[data-theme="dark"] .home .home-head h1{color:#fff!important}
 html[data-theme="dark"] .home .home-head .eyebrow{color:#cbd5e1!important}
 html[data-theme="dark"] .home .home-head .sub{color:#cbd5e1!important}
+
+/* v31 headings outside white cards */
+html[data-theme="dark"] main > h1,html[data-theme="dark"] main > h2,html[data-theme="dark"] main > .section,html[data-theme="dark"] body > h1,html[data-theme="dark"] .home-head h1,html[data-theme="dark"] .page-head h1{color:#f8fafc!important}
+html[data-theme="dark"] main > p,html[data-theme="dark"] .page-head > p{color:#cbd5e1!important}
+html[data-theme="dark"] main > a.back{color:#93c5fd!important}
+html[data-theme="dark"] :is(.card,.hero,.panel,.box,.note) :is(h1,h2,h3,h4){color:#172033!important}
