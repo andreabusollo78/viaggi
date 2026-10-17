@@ -4,3 +4,6 @@ body{padding-bottom:70px!important}.bottom-nav{position:fixed;bottom:0;left:0;ri
 
 /* v32: consistently legible action buttons on white cards */
 a.navbtn,a.action,a[href].navbtn,button.primary,.actions a{color:#fff!important}a.navbtn:visited,a.action:visited{color:#fff!important}.bottom-nav a{color:#172033!important}.bottom-nav a span{color:#596b82!important}
+
+/* v40 unified actionable controls, excluding navigation, plain links and tiles */
+a.navbtn,a.btn,a.walkbtn,a.guidebtn,a.action,.actions a,.actions a.secondary,button.primary,button.printbtn,.chips button,#refresh{background:#374151!important;color:#fff!important;border-color:#374151!important}
