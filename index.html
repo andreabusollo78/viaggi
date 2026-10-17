@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="it"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Billund & Copenhagen 2026 · Mobile v36.1</title>
+<title>Billund & Copenhagen 2026 · Mobile v36.2</title>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
 <style>
 :root{--bg:#f4f7fb;--ink:#152033;--muted:#667085;--blue:#1769e0;--nav:#0f172a;--card:#fff;--line:#e5e7eb}
@@ -89,7 +89,7 @@ tripDays.forEach((d,i)=>{
   a.innerHTML=`<b>${d.day} · ${d.date}</b><span>${d.title}</span>
     <div class="weatherline" id="weather-${i}" data-weather-day="${i}">
       <span class="weathericon">◌</span><span class="weatherdesc">Previsioni non ancora disponibili</span><span class="weathertemp"></span>
-    </div>`;
+    </div><div class="weathersource" data-weather-day="${i}">Probabilità pioggia: in caricamento…</div>`;
   $("#days").appendChild(a);
 });
 
